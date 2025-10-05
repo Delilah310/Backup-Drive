@@ -1,7 +1,21 @@
-第3行：my-database-name改为自己的数据库名
-第4行：my-database-user改为自己的数据库用户名
-第5行：my-database-password改为自己的数据库用户名对应的密码
-第7行：yourdomain.com改为自己的网站目录
-第8行：/home/wwwroot改为自己的网站所在目录（即需备份目录为/home/wwwroot/yourdomain.com）
-第9行：/backups改为备份文件存放目录
-第35行：youremail@yourdomain.com修改为自己的邮箱
+Line 3: Change "my-database-name" to your database name.
+Line 4: Change "my-database-user" to your database username.
+Line 5: Change "my-database-password" to your database username's password.
+Line 7: Change "yourdomain.com" to your website directory.
+Line 8: Change "/home/wwwroot" to your website directory (i.e., the backup directory should be "/home/wwwroot/yourdomain.com").
+Line 9: Change "/backups" to your backup file directory.
+Line 35: Change "youremail@yourdomain.com" to your email address.
+
+2. Create a scheduled task
+
+vi /etc/crontab
+
+Add
+
+0 2 * * * /backups/googledrive.sh
+
+The above backup script is stored in /backups/ and will be backed up daily at 2:00 AM. You can set the time to suit your preference.
+
+3. Restart crontab
+
+/etc/init.d/crond restart
